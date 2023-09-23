@@ -1,5 +1,4 @@
 res://default_env.tres
 res://GameScene.tscn
-res://scripts/GameScene.gd
+res://AlienDude.tscn
 res://AndroidPlayerScene.tscn
-res://scripts/AndroidPlayerScene.gd

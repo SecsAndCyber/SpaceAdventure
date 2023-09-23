@@ -3,7 +3,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	displaySceneAtLocation("res://GameScene.tscn", $ScreenDisplayLocation)
+	var viewport = $ScreenDisplayLocation/SubViewportContainer/SubViewport
+	viewport.set_clear_mode(SubViewport.CLEAR_MODE_ALWAYS)
+	# displaySceneAtLocation("res://GameScene.tscn", $ScreenDisplayLocation)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -11,49 +13,42 @@ func _process(_delta):
 	if $TouchScreenButtonB.is_pressed():
 		make_beep()
 		var accept_event = InputEventAction.new()
-		accept_event.action = "ui_accept"
+		accept_event.action = "GB_Button_B"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonA.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
-		accept_event.action = "ui_accept"
+		accept_event.action = "GB_Button_A"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonUP.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_up"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonDOWN.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_down"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonLEFT.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_left"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonRIGHT.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_right"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonSTART.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_cancel"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 	if $TouchScreenButtonSELECT.is_pressed():
-		make_beep()
 		var accept_event = InputEventAction.new()
-		accept_event.action = "ui_cancel"
+		accept_event.action = "ui_menu"
 		accept_event.pressed = true
 		Input.parse_input_event(accept_event)
 

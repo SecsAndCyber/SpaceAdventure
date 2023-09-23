@@ -6,3 +6,5 @@ android/build
 .godot/editor/script_editor_cache.cfg
 .godot/uid_cache.bin
 .godot/export_credentials.cfg
+*.tmp
+

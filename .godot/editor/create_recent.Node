@@ -1,5 +1,16 @@
+SubViewportContainer
+SubViewport
+Node
+ParallaxLayer
+ParallaxBackground
+StaticBody2D
+CollisionShape2D
+AnimationPlayer
+RemoteTransform2D
+Camera2D
+RigidBody2D
+CharacterBody2D
 TouchScreenButton
 Sprite2D
-SubViewport
 Node2D
 TextureRect
