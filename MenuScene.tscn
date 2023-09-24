@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvgcmqk424ml5"]
+
+[ext_resource type="Script" path="res://scripts/MenuScene.gd" id="1_6mcd1"]
+[ext_resource type="Texture2D" uid="uid://f1s12tvc18xx" path="res://assets/UI/MenuScreen.png" id="2_xfee5"]
+[ext_resource type="Texture2D" uid="uid://csehuovl62agf" path="res://assets/UI/MenuUnfocused.png" id="3_oc20r"]
+[ext_resource type="Texture2D" uid="uid://cd87ssihvhjnf" path="res://assets/UI/MenuFocused.png" id="4_adbq0"]
+[ext_resource type="Texture2D" uid="uid://kr1hwnjl4na7" path="res://assets/LilDudeSprite.png" id="5_q14ny"]
+[ext_resource type="Texture2D" uid="uid://b820g1hqkutor" path="res://assets/UI/ExcapeForeground.png" id="6_hct5m"]
+[ext_resource type="Texture2D" uid="uid://bnx4qp3oxi0rl" path="res://assets/AlienDude.png" id="7_rgypr"]
+
+[node name="WelcomeMenu" type="Node2D"]
+script = ExtResource("1_6mcd1")
+
+[node name="MenuBackground" type="Sprite2D" parent="."]
+texture = ExtResource("2_xfee5")
+centered = false
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="Control" type="Control" parent="Buttons"]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 58.0
+offset_right = 110.0
+offset_bottom = 69.0
+
+[node name="Button" type="TextureButton" parent="Buttons/Control"]
+layout_mode = 0
+texture_normal = ExtResource("3_oc20r")
+texture_hover = ExtResource("4_adbq0")
+texture_focused = ExtResource("4_adbq0")
+
+[node name="Control2" type="Control" parent="Buttons"]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 78.0
+offset_right = 113.0
+offset_bottom = 95.0
+
+[node name="Button2" type="TextureButton" parent="Buttons/Control2"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+texture_normal = ExtResource("3_oc20r")
+texture_hover = ExtResource("4_adbq0")
+texture_focused = ExtResource("4_adbq0")
+
+[node name="LilDudeSprite" type="Sprite2D" parent="."]
+position = Vector2(26, 122)
+texture = ExtResource("5_q14ny")
+hframes = 2
+vframes = 2
+
+[node name="ExcapeForeground" type="Sprite2D" parent="."]
+position = Vector2(12, 100)
+rotation = -1.5708
+texture = ExtResource("6_hct5m")
+
+[node name="AlienDude" type="Sprite2D" parent="."]
+position = Vector2(138, 110)
+texture = ExtResource("7_rgypr")
+hframes = 2

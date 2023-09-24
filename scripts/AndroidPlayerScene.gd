@@ -1,69 +1,145 @@
 extends Node2D
 
-
+var ButtonState = {
+	'JOY_BUTTON_B' : 0,
+	'JOY_BUTTON_A' : 0,
+	'JOY_BUTTON_DPAD_UP' : 0,
+	'JOY_BUTTON_DPAD_DOWN' : 0,
+	'JOY_BUTTON_DPAD_RIGHT' : 0,
+	'JOY_BUTTON_DPAD_LEFT' : 0,
+	'JOY_BUTTON_START' : 0,
+	'JOY_BUTTON_BACK' : 0,
+}
+var process_input = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var viewport = $ScreenDisplayLocation/SubViewportContainer/SubViewport
 	viewport.set_clear_mode(SubViewport.CLEAR_MODE_ALWAYS)
-	# displaySceneAtLocation("res://GameScene.tscn", $ScreenDisplayLocation)
-
+	process_input = true
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if not process_input: return
 	if $TouchScreenButtonB.is_pressed():
-		make_beep()
+		if not ButtonState['JOY_BUTTON_B']:
+			ButtonState['JOY_BUTTON_B'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "GB_Button_B"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_B']:
+		ButtonState['JOY_BUTTON_B'] = 0
 		var accept_event = InputEventAction.new()
 		accept_event.action = "GB_Button_B"
-		accept_event.pressed = true
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
+
 	if $TouchScreenButtonA.is_pressed():
+		if not ButtonState['JOY_BUTTON_A']:
+			ButtonState['JOY_BUTTON_A'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "GB_Button_A"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_A']:
+		ButtonState['JOY_BUTTON_A'] = 0
 		var accept_event = InputEventAction.new()
 		accept_event.action = "GB_Button_A"
-		accept_event.pressed = true
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
+
 	if $TouchScreenButtonUP.is_pressed():
+		if not ButtonState['JOY_BUTTON_DPAD_UP']:
+			ButtonState['JOY_BUTTON_DPAD_UP'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "ui_up"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_DPAD_UP']:
+		ButtonState['JOY_BUTTON_DPAD_UP'] = 0
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_up"
-		accept_event.pressed = true
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
+		
 	if $TouchScreenButtonDOWN.is_pressed():
+		if not ButtonState['JOY_BUTTON_DPAD_DOWN']:
+			ButtonState['JOY_BUTTON_DPAD_DOWN'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "ui_down"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_DPAD_DOWN']:
+		ButtonState['JOY_BUTTON_DPAD_DOWN'] = 0
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_down"
-		accept_event.pressed = true
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
-	if $TouchScreenButtonLEFT.is_pressed():
-		var accept_event = InputEventAction.new()
-		accept_event.action = "ui_left"
-		accept_event.pressed = true
-		Input.parse_input_event(accept_event)
+
 	if $TouchScreenButtonRIGHT.is_pressed():
+		if not ButtonState['JOY_BUTTON_DPAD_RIGHT']:
+			ButtonState['JOY_BUTTON_DPAD_RIGHT'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "ui_right"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_DPAD_RIGHT']:
+		ButtonState['JOY_BUTTON_DPAD_RIGHT'] = 0
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_right"
-		accept_event.pressed = true
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
+
+	if $TouchScreenButtonLEFT.is_pressed():
+		if not ButtonState['JOY_BUTTON_DPAD_LEFT']:
+			ButtonState['JOY_BUTTON_DPAD_LEFT'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "ui_left"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_DPAD_LEFT']:
+		ButtonState['JOY_BUTTON_DPAD_LEFT'] = 0
+		var accept_event = InputEventAction.new()
+		accept_event.action = "ui_left"
+		accept_event.pressed = false
+		Input.parse_input_event(accept_event)
+
 	if $TouchScreenButtonSTART.is_pressed():
+		if not ButtonState['JOY_BUTTON_START']:
+			ButtonState['JOY_BUTTON_START'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "ui_cancel"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_START']:
+		ButtonState['JOY_BUTTON_START'] = 0
 		var accept_event = InputEventAction.new()
 		accept_event.action = "ui_cancel"
-		accept_event.pressed = true
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
+
 	if $TouchScreenButtonSELECT.is_pressed():
+		if not ButtonState['JOY_BUTTON_BACK']:
+			ButtonState['JOY_BUTTON_BACK'] = 1
+			make_beep()
+			var accept_event = InputEventAction.new()
+			accept_event.action = "ui_cancel"
+			accept_event.pressed = true
+			Input.parse_input_event(accept_event)
+	elif ButtonState['JOY_BUTTON_BACK']:
+		ButtonState['JOY_BUTTON_BACK'] = 0
 		var accept_event = InputEventAction.new()
-		accept_event.action = "ui_menu"
-		accept_event.pressed = true
+		accept_event.action = "ui_cancel"
+		accept_event.pressed = false
 		Input.parse_input_event(accept_event)
-
-
-func displaySceneAtLocation(scene_path, location_node):
-	# Load the scene to be displayed
-	var scene_instance = load(scene_path).instantiate()
-	
-	# Ensure it's a Node2D
-	if scene_instance is Node2D:
-		var scene_node = scene_instance as Node2D		
-		# Add the scene as a child of the location node
-		location_node.add_child(scene_node)
-	else:
-		print("The scene loaded is not a Node2D.")
 
 func beep():
 	if OS.is_debug_build():

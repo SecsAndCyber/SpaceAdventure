@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b11cnyuqqfrh7"]
+
+[ext_resource type="Script" path="res://scripts/CameraHudUI.gd" id="1_v4eym"]
+[ext_resource type="Texture2D" uid="uid://dovhcauxr6cvl" path="res://assets/Skyscape.png" id="2_hfto5"]
+[ext_resource type="Texture2D" uid="uid://3jdumrhd53y8" path="res://assets/UI/HealthBarBackground.png" id="3_7jdt5"]
+[ext_resource type="Texture2D" uid="uid://bbwgcqxtl3x62" path="res://assets/UI/HealthBarForeground.png" id="4_clow3"]
+[ext_resource type="Texture2D" uid="uid://bxi181si7c1y" path="res://assets/UI/ExcapeBackground.png" id="5_totnk"]
+[ext_resource type="Texture2D" uid="uid://b820g1hqkutor" path="res://assets/UI/ExcapeForeground.png" id="6_rbk66"]
+
+[node name="UiHud" type="RemoteTransform2D"]
+remote_path = NodePath("Camera2D")
+script = ExtResource("1_v4eym")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -160
+limit_top = -144
+limit_right = 160
+limit_bottom = 144
+editor_draw_limits = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -79.0
+offset_top = -70.0
+offset_right = -39.0
+offset_bottom = -30.0
+
+[node name="Skyscape" type="Sprite2D" parent="Control"]
+z_index = 100
+z_as_relative = false
+position = Vector2(79, 70)
+texture = ExtResource("2_hfto5")
+
+[node name="HealthDisplay" type="TextureProgressBar" parent="Control"]
+z_index = 110
+layout_mode = 0
+offset_left = -1.0
+offset_top = 126.0
+offset_right = 63.0
+offset_bottom = 142.0
+max_value = 300.0
+texture_under = ExtResource("3_7jdt5")
+texture_progress = ExtResource("4_clow3")
+
+[node name="EscapeDisplay" type="TextureProgressBar" parent="Control"]
+z_index = 110
+layout_mode = 0
+offset_left = 95.0
+offset_top = 126.0
+offset_right = 159.0
+offset_bottom = 142.0
+max_value = 300.0
+texture_under = ExtResource("5_totnk")
+texture_progress = ExtResource("6_rbk66")

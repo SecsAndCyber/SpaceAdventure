@@ -1,4 +1,8 @@
-res://AndroidPlayerScene.tscn::a0a8d06af584224fb356aa1558f4ab47::1694991867::res://.godot/exported/133200997/export-465d74190fe210dbcdf639df78a5d49b-AndroidPlayerScene.scn
-res://default_env.tres::640f24546710a6b9fa193b081fdd2030::1695330228::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
-res://GameScene.tscn::a999b70f755e0ce2e2aa49a7145d0806::1695330228::res://.godot/exported/133200997/export-e2c04f88cc384ae305072b7c73076002-GameScene.scn
-res://LilDude.tscn::1d7ae3b9d2875b7cb97dbc80263df4df::1695330228::res://.godot/exported/133200997/export-bf75e14d459152abd78b5405bd46a9df-LilDude.scn
+res://AndroidPlayerScene.tscn::d3b1afc22e6c09138c3ae49de2c12ed3::1695590829::res://.godot/exported/133200997/export-465d74190fe210dbcdf639df78a5d49b-AndroidPlayerScene.scn
+res://default_env.tres::640f24546710a6b9fa193b081fdd2030::1695591808::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
+res://GameScene.tscn::faefec68dd07ceca3e99743ae7f8f59d::1695591808::res://.godot/exported/133200997/export-e2c04f88cc384ae305072b7c73076002-GameScene.scn
+res://LilDude.tscn::30940fba3c22c7282afb06776e26857f::1695586223::res://.godot/exported/133200997/export-bf75e14d459152abd78b5405bd46a9df-LilDude.scn
+res://AlienDude.tscn::733e1114e3bf8417427cc33bc4e3eeb0::1695513359::res://.godot/exported/133200997/export-19eb6b02a73a9df2631fc780229c45b3-AlienDude.scn
+res://UiHud.tscn::5a9bef2aac50dfa92809cff446b03bb0::1695586223::res://.godot/exported/133200997/export-0eae71b95294096ead8f2dfb79e4b121-UiHud.scn
+res://MenuScene.tscn::8701bc3710274fd041b5557e50486482::1695591769::res://.godot/exported/133200997/export-6df2b6e9d1a739a49560e6c0d6418ab0-MenuScene.scn
+res://CreditsScene.tscn::c538eae70c07be583b93969e23164f13::1695591318::res://.godot/exported/133200997/export-672bc89b77ca2a80ac7195ebfb1f9b26-CreditsScene.scn

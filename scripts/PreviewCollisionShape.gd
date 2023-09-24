@@ -1,5 +1,5 @@
 extends CollisionShape2D
-
+	
 func _draw():
 	if ProjectSettings.get_setting_with_override("application/config/game/draw_colliders"):
 		draw_collision_shape()

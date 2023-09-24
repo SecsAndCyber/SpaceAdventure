@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://csbuqbnc2kxtb"]
+
+[ext_resource type="Script" path="res://scripts/CreditsScene.gd" id="1_8m66u"]
+[ext_resource type="Texture2D" uid="uid://ckvsajm3d30iq" path="res://assets/UI/CreditsScreen.png" id="2_0b2ti"]
+
+[node name="CreditsScene" type="Node2D"]
+script = ExtResource("1_8m66u")
+
+[node name="CreditsScreen" type="Sprite2D" parent="."]
+texture = ExtResource("2_0b2ti")
+centered = false

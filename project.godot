@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="AndroidExportProject"
-run/main_scene="res://GameScene.tscn"
+config/name="Space Adventure"
+config/description="Defeat the aliens to explore new worlds	"
+run/main_scene="res://MenuScene.tscn"
 config/features=PackedStringArray("4.1")
 boot_splash/image="res://assets/GB Jam Logo.png"
 config/icon="res://assets/GB Jam Logo.png"
-boot_splash/minimum_display_time=2
+boot_splash/minimum_display_time=1
 run/main_scene.android="res://AndroidPlayerScene.tscn"
 config/game/speed=100
 config/game/speed.android=150
@@ -31,6 +32,7 @@ window/size/viewport_width=160
 window/size/viewport_height=144
 window/size/mode=2
 window/stretch/mode="viewport"
+window/handheld/orientation=1
 window/handheld/orientation.android=1
 window/size/viewport_width.android=256
 window/size/viewport_height.android=555

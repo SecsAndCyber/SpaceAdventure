@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d4ejwomucd3fd" path="res://assets/PixelPhoneScreenLayout.png" id="1_him6g"]
 [ext_resource type="Script" path="res://scripts/AndroidPlayerScene.gd" id="1_rjg56"]
-[ext_resource type="PackedScene" uid="uid://b38rk8wit5rg4" path="res://GameScene.tscn" id="3_f2vdv"]
+[ext_resource type="PackedScene" uid="uid://dvgcmqk424ml5" path="res://MenuScene.tscn" id="4_y4os4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y1tmr"]
 radius = 22.0
@@ -27,17 +27,17 @@ handle_input_locally = false
 size = Vector2i(160, 144)
 render_target_update_mode = 4
 
-[node name="GameScene" parent="ScreenDisplayLocation/SubViewportContainer/SubViewport" instance=ExtResource("3_f2vdv")]
+[node name="WelcomeMenu" parent="ScreenDisplayLocation/SubViewportContainer/SubViewport" instance=ExtResource("4_y4os4")]
 
 [node name="TouchScreenButtonA" type="TouchScreenButton" parent="."]
 top_level = true
-position = Vector2(222, 348)
+position = Vector2(181, 375)
 shape = SubResource("CircleShape2D_y1tmr")
 action = "ui_accept"
 
 [node name="TouchScreenButtonB" type="TouchScreenButton" parent="."]
 top_level = true
-position = Vector2(180.675, 376.575)
+position = Vector2(222, 349)
 shape = SubResource("CircleShape2D_y1tmr")
 action = "ui_accept"
 

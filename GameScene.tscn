@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b38rk8wit5rg4"]
+[gd_scene load_steps=16 format=3 uid="uid://b38rk8wit5rg4"]
 
 [ext_resource type="Script" path="res://scripts/GameScene.gd" id="1_10ces"]
 [ext_resource type="Texture2D" uid="uid://h786ee1v0go5" path="res://assets/Map.png" id="2_cb78j"]
+[ext_resource type="PackedScene" uid="uid://b11cnyuqqfrh7" path="res://UiHud.tscn" id="3_gdptq"]
 [ext_resource type="PackedScene" uid="uid://buxq7soyxq83k" path="res://LilDude.tscn" id="3_ss55a"]
-[ext_resource type="Texture2D" uid="uid://dovhcauxr6cvl" path="res://assets/Skyscape.png" id="4_i0lvo"]
 [ext_resource type="Script" path="res://scripts/PreviewCollisionShape.gd" id="5_4q4cb"]
 [ext_resource type="Script" path="res://scripts/AlignBounds.gd" id="6_6eg3x"]
 [ext_resource type="PackedScene" uid="uid://bcan7yn1elaj3" path="res://AlienDude.tscn" id="7_y3w4n"]
@@ -19,28 +19,28 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_uh0hb"]
 radius = 5.09902
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_btajm"]
+vertices = PackedVector2Array(44, 48, -5, 45, -42, 24, -30, -2, -12, -1, 59, 10, 5, -25, 48, -23, -6, -15)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 5, 4, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-6, -15, 5, -25, 48, -23, 59, 10, 44, 48, -5, 45, -42, 24, -30, -2, -12, -1)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_btvsh"]
+vertices = PackedVector2Array(-9.00001, -10, -7, -34, 43, -42, 66, -9, 59, 22, 10, 39, -31, 31, -35, 1)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(0, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-9.00001, -10, -7, -34, 43, -42, 66, -9, 59, 22, 10, 39, -31, 31, -35, 1)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cwo4v"]
+vertices = PackedVector2Array(-44, 81, -105, 74, -107, 45, -82, 41, -20, 60, -64, 11, -24, 23, -81, 26)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 4, 3, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-81, 26, -64, 11, -24, 23, -20, 60, -44, 81, -105, 74, -107, 45, -82, 41)])
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_10ces")
 
 [node name="LilDude" parent="." instance=ExtResource("3_ss55a")]
-position = Vector2(0, 0)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LilDude"]
-remote_path = NodePath("Camera2D")
-
-[node name="Camera2D" type="Camera2D" parent="LilDude/RemoteTransform2D"]
-position = Vector2(-80, -70)
-anchor_mode = 0
-limit_left = -300
-limit_top = -180
-limit_right = 300
-limit_bottom = 180
-editor_draw_limits = true
-
-[node name="Skyscape" type="Sprite2D" parent="LilDude/RemoteTransform2D"]
-z_index = 100
-z_as_relative = false
-texture = ExtResource("4_i0lvo")
+[node name="UiHud" parent="LilDude" instance=ExtResource("3_gdptq")]
+visible = false
 
 [node name="Bounds" type="Node" parent="."]
 script = ExtResource("6_6eg3x")
@@ -105,13 +105,25 @@ shape = SubResource("CircleShape2D_uh0hb")
 [node name="Aliens" type="Node" parent="Viewable"]
 
 [node name="AlienDude" parent="Viewable/Aliens" instance=ExtResource("7_y3w4n")]
-position = Vector2(80, -72)
+position = Vector2(93, -16)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Viewable/Aliens/AlienDude"]
+position = Vector2(-13, -12)
+navigation_polygon = SubResource("NavigationPolygon_btajm")
 
 [node name="AlienDude2" parent="Viewable/Aliens" instance=ExtResource("7_y3w4n")]
-position = Vector2(-127, -47)
+position = Vector2(-97, -30)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Viewable/Aliens/AlienDude2"]
+position = Vector2(-8, -11)
+navigation_polygon = SubResource("NavigationPolygon_btvsh")
 
 [node name="AlienDude3" parent="Viewable/Aliens" instance=ExtResource("7_y3w4n")]
-position = Vector2(-19, 64)
+position = Vector2(-86, 50)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Viewable/Aliens/AlienDude3"]
+position = Vector2(72, -45)
+navigation_polygon = SubResource("NavigationPolygon_cwo4v")
 
 [node name="WorldSpace" type="Sprite2D" parent="Viewable"]
 show_behind_parent = true
