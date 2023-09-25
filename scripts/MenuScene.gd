@@ -48,4 +48,8 @@ func _input(event):
 			event.is_action("GB_Button_A"):
 			activate_menu_selection()
 			return
+		if event.is_action_pressed("ui_cancel"):
+			print("ui_cancel")
+			get_tree().quit()
+			return
 			

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://csbuqbnc2kxtb"]
+[gd_scene load_steps=4 format=3 uid="uid://csbuqbnc2kxtb"]
 
 [ext_resource type="Script" path="res://scripts/CreditsScene.gd" id="1_8m66u"]
 [ext_resource type="Texture2D" uid="uid://ckvsajm3d30iq" path="res://assets/UI/CreditsScreen.png" id="2_0b2ti"]
+[ext_resource type="AudioStream" uid="uid://2xjeaa8koc8o" path="res://assets/Sounds/background.wav" id="3_0edg2"]
 
 [node name="CreditsScene" type="Node2D"]
 script = ExtResource("1_8m66u")
@@ -9,3 +10,8 @@ script = ExtResource("1_8m66u")
 [node name="CreditsScreen" type="Sprite2D" parent="."]
 texture = ExtResource("2_0b2ti")
 centered = false
+
+[node name="BackgroundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0edg2")
+volume_db = -10.0
+autoplay = true

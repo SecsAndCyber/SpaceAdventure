@@ -1,14 +1,7 @@
 res://default_env.tres
 res://GameScene.tscn
 res://scripts/CameraHudUI.gd
+res://AlienDude.tscn
 res://LilDude.tscn
-res://UiHud.tscn
-res://scripts/LilDude.gd
-res://scripts/AlienDude.gd
 res://MenuScene.tscn
-res://scripts/MenuScene.gd
-res://AndroidPlayerScene.tscn
-res://scripts/AndroidPlayerScene.gd
 res://CreditsScene.tscn
-res://scripts/CreditsScene.gd
-res://scripts/GameScene.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b38rk8wit5rg4"]
+[gd_scene load_steps=17 format=3 uid="uid://b38rk8wit5rg4"]
 
 [ext_resource type="Script" path="res://scripts/GameScene.gd" id="1_10ces"]
 [ext_resource type="Texture2D" uid="uid://h786ee1v0go5" path="res://assets/Map.png" id="2_cb78j"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/PreviewCollisionShape.gd" id="5_4q4cb"]
 [ext_resource type="Script" path="res://scripts/AlignBounds.gd" id="6_6eg3x"]
 [ext_resource type="PackedScene" uid="uid://bcan7yn1elaj3" path="res://AlienDude.tscn" id="7_y3w4n"]
+[ext_resource type="AudioStream" uid="uid://2xjeaa8koc8o" path="res://assets/Sounds/background.wav" id="8_f54vf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_81ys3"]
 
@@ -128,3 +129,10 @@ navigation_polygon = SubResource("NavigationPolygon_cwo4v")
 [node name="WorldSpace" type="Sprite2D" parent="Viewable"]
 show_behind_parent = true
 texture = ExtResource("2_cb78j")
+
+[node name="SfxStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="BackgroundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f54vf")
+volume_db = -10.0
+autoplay = true

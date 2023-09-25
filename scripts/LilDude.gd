@@ -19,10 +19,12 @@ signal step(player_position)
 signal attacked(attack_area2d)
 signal player_death()
 signal player_escaped()
+signal play_sound(sound_resource, interrupt)
 
 func _ready():
 	self.player_death.connect($".."._on_Player_Death.bind())
 	self.player_escaped.connect($".."._on_Player_Escaped.bind())
+	self.play_sound.connect($".."._on_Play_Sound.bind())
 	$"..".escape_begin.connect(_on_Player_Escape.bind())
 	FlyAway = $UiHud.get_node("Control/EscapeDisplay")
 	Camera = $UiHud
@@ -74,6 +76,7 @@ func _input(event):
 
 func _physics_process(_delta):
 	$Sprite.modulate = Color(1,1,1,1)
+	if is_cutscene: return
 	
 	# Normalize to ensure consistent speed in all directions
 	# Calculate the character's velocity
@@ -148,6 +151,7 @@ func _on_Player_bumped(body):
 	velocity = bounce_velocity
 	move_player()
 	health -= 20
+	emit_signal("play_sound", "res://assets/Sounds/dwah.wav", true)
 	if health <= 0:
 		emit_signal("player_death")
 	$Sprite.modulate = Color(100,100,100,100)
@@ -163,6 +167,7 @@ func _on_Player_Escape():
 func CutScene_Escape():
 	var CameraPos = Camera.global_position
 	await get_tree().create_timer(.25).timeout
+	emit_signal("play_sound", "res://assets/Sounds/preparing_for_launch.wav", true)
 	$AnimationPlayer.play("Walk_Down")
 	melee_attack_stop()
 	await get_tree().create_timer(.5).timeout
@@ -177,6 +182,7 @@ func CutScene_Escape():
 		global_position.x += 5
 		Camera.global_position = CameraPos
 	$Sprite.visible = false
+	emit_signal("play_sound", "res://assets/Sounds/rocket.wav", true)
 	while FlyAway.rotation_degrees > -90:
 		await get_tree().create_timer(.25).timeout
 		FlyAway.rotation_degrees -= 5

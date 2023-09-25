@@ -33,6 +33,12 @@ func _input(event):
 			print("ui_cancel")
 			get_tree().quit()
 
+func _on_Play_Sound(sound_resource, interrupt):
+	if not interrupt and $SfxStreamPlayer.is_playing(): return
+	if not $SfxStreamPlayer.stream == load(sound_resource):
+		$SfxStreamPlayer.stream = load(sound_resource)
+		$SfxStreamPlayer.play()
+
 func _on_Enemy_Death():
 	EscapeProgress += 1
 	emit_signal("escape_progress", EscapeProgress)
