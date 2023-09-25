@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://b52mwl2eatds0"]
+
+[ext_resource type="Script" path="res://scripts/GameScene.gd" id="1_m7cgd"]
+[ext_resource type="PackedScene" uid="uid://buxq7soyxq83k" path="res://LilDude.tscn" id="2_ivkbe"]
+[ext_resource type="PackedScene" uid="uid://b11cnyuqqfrh7" path="res://UiHud.tscn" id="3_gvm3e"]
+[ext_resource type="Script" path="res://scripts/AlignBounds.gd" id="4_c1hd4"]
+[ext_resource type="Script" path="res://scripts/PreviewCollisionShape.gd" id="5_kd7ak"]
+[ext_resource type="PackedScene" uid="uid://bcan7yn1elaj3" path="res://AlienDude.tscn" id="6_xs0n2"]
+[ext_resource type="Texture2D" uid="uid://c0o3em6q6maoq" path="res://assets/Tutorial.png" id="7_ytijv"]
+[ext_resource type="AudioStream" uid="uid://2xjeaa8koc8o" path="res://assets/Sounds/background.wav" id="8_jk8rq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_81ys3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kabc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bg24c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0mog"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_btajm"]
+vertices = PackedVector2Array(5, -7, 16, -11, 33, -8, 36, 10, 31, 33, 14, 34, 1, 31, -6, 18, -4, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(5, -7, 16, -11, 33, -8, 36, 10, 31, 33, 14, 34, 1, 31, -6, 18, -4, 8)])
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_m7cgd")
+AlienSpeedMultiplier = 0.0
+NextLevel = "res://GameScene.tscn"
+SingleScreen = true
+EscapeCost = 1
+
+[node name="LilDude" parent="." instance=ExtResource("2_ivkbe")]
+z_index = 101
+z_as_relative = false
+position = Vector2(-2, -4)
+
+[node name="UiHud" parent="LilDude" instance=ExtResource("3_gvm3e")]
+
+[node name="Bounds" type="Node" parent="."]
+script = ExtResource("4_c1hd4")
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(0, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+shape = SubResource("WorldBoundaryShape2D_81ys3")
+script = ExtResource("5_kd7ak")
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(0, -58)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+shape = SubResource("WorldBoundaryShape2D_1kabc")
+script = ExtResource("5_kd7ak")
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(-79, -1)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+shape = SubResource("WorldBoundaryShape2D_bg24c")
+script = ExtResource("5_kd7ak")
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(79, 0)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+shape = SubResource("WorldBoundaryShape2D_y0mog")
+script = ExtResource("5_kd7ak")
+
+[node name="Viewable" type="Node" parent="."]
+
+[node name="Aliens" type="Node" parent="Viewable"]
+
+[node name="AlienDude" parent="Viewable/Aliens" instance=ExtResource("6_xs0n2")]
+position = Vector2(26, -8)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Viewable/Aliens/AlienDude"]
+position = Vector2(-13, -12)
+navigation_polygon = SubResource("NavigationPolygon_btajm")
+
+[node name="WorldSpace" type="Sprite2D" parent="Viewable"]
+show_behind_parent = true
+texture = ExtResource("7_ytijv")
+
+[node name="SfxStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="BackgroundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jk8rq")
+volume_db = -10.0
+autoplay = true
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Define movement variables
-var speed = .20 * ProjectSettings.get_setting_with_override("application/config/game/speed")
+var speed = ProjectSettings.get_setting_with_override("application/config/game/speed")
 
 signal attack(_self)
 signal enemy_death(_self)
@@ -17,7 +17,7 @@ func FindGameScene(_node):
 		_node = get_node("/root")
 	for child_node in _node.get_children():
 		if "GameScene" in child_node.name:
-			return child_node
+			return child_node as GameSceneObj
 		var recursive = FindGameScene(child_node)
 		if recursive:
 			return recursive
@@ -28,6 +28,8 @@ func _ready():
 	GameScene = FindGameScene(null)
 	self.enemy_death.connect(GameScene._on_Enemy_Death.bind())
 	self.play_sound.connect(GameScene._on_Play_Sound.bind())
+	speed *= GameScene.AlienSpeedMultiplier
+	
 	navigation_ready = true
 	navigation_agent.set_navigation_map ($NavigationRegion2D)
 	navigation_agent.set_target_position(default_location)

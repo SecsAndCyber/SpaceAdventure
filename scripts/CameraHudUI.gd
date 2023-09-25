@@ -7,6 +7,7 @@ var ProgressDisplay = null
 var update = false
 
 var resolution = Vector2(160,144)
+var frozen_position = null
 
 var GameScene = null
 func FindGameScene(_node):
@@ -14,7 +15,7 @@ func FindGameScene(_node):
 		_node = get_node("/root")
 	for child_node in _node.get_children():
 		if "GameScene" in child_node.name:
-			return child_node
+			return child_node as GameSceneObj
 		var recursive = FindGameScene(child_node)
 		if recursive:
 			return recursive
@@ -42,9 +43,14 @@ func _ready():
 	$Camera2D.limit_left = -((MapSize.x / 2) + resolution.x)
 	
 	update = true
+	
+func FreezeCamera():
+	frozen_position = global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if frozen_position:
+		global_position = frozen_position
 	if not update: return
 	LifeDisplay.set_value(PlayerObject.health)
 	

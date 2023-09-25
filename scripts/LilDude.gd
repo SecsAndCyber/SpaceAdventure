@@ -10,6 +10,7 @@ var health = 300
 var FlyAway = null
 var Camera = null
 var is_cutscene = false
+var GameScene = null
 
 # Read player input from D-pad
 var input_vector = Vector2(0, 0)
@@ -22,10 +23,11 @@ signal player_escaped()
 signal play_sound(sound_resource, interrupt)
 
 func _ready():
-	self.player_death.connect($".."._on_Player_Death.bind())
-	self.player_escaped.connect($".."._on_Player_Escaped.bind())
-	self.play_sound.connect($".."._on_Play_Sound.bind())
-	$"..".escape_begin.connect(_on_Player_Escape.bind())
+	GameScene = $".."
+	self.player_death.connect(GameScene._on_Player_Death.bind())
+	self.player_escaped.connect(GameScene._on_Player_Escaped.bind())
+	self.play_sound.connect(GameScene._on_Play_Sound.bind())
+	GameScene.escape_begin.connect(_on_Player_Escape.bind())
 	FlyAway = $UiHud.get_node("Control/EscapeDisplay")
 	Camera = $UiHud
 	
@@ -116,27 +118,30 @@ func move_player():
 				# Access the collision at index i
 				var collision = get_slide_collision(i)
 				print("Collided with: ", collision.get_collider().name)
-				var adjustment = Vector2(0,0)
-				if collision.get_collider() == $"../Bounds/TopBound":
-					if movement.y < 0:
-						position.y *= -1
-						adjustment =  Vector2(0, -height)
-				if collision.get_collider() == $"../Bounds/BottomBound":
-					if movement.y > 0:
-						position.y *= -1
-						adjustment =  Vector2(0, height)
-				if collision.get_collider() == $"../Bounds/LeftBound":
-					if movement.x < 0:
-						position.x *= -1
-						adjustment =  Vector2(-width, 0)
-				if collision.get_collider() == $"../Bounds/RightBound":
-					if movement.x > 0:
-						position.x *= -1
-						adjustment =  Vector2(width, 0)
-				if adjustment:
-					emit_signal("shook_free", position, adjustment)
-					position += adjustment
-					return
+				if not GameScene.SingleScreen:
+					var adjustment = Vector2(0,0)
+					if collision.get_collider() == $"../Bounds/TopBound":
+						if movement.y < 0:
+							position.y *= -1
+							adjustment =  Vector2(0, -height)
+					if collision.get_collider() == $"../Bounds/BottomBound":
+						if movement.y > 0:
+							position.y *= -1
+							adjustment =  Vector2(0, height)
+					if collision.get_collider() == $"../Bounds/LeftBound":
+						if movement.x < 0:
+							position.x *= -1
+							adjustment =  Vector2(-width, 0)
+					if collision.get_collider() == $"../Bounds/RightBound":
+						if movement.x > 0:
+							position.x *= -1
+							adjustment =  Vector2(width, 0)
+					if adjustment:
+						emit_signal("shook_free", position, adjustment)
+						position += adjustment
+						return
+				if "AlienDude" in collision.get_collider().name:
+					_on_Player_bumped(collision.get_collider())
 
 	# Play animations or other character-specific logic here
 

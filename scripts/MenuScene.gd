@@ -1,4 +1,4 @@
-extends Node2D
+extends "res://scripts/LoadableScene.gd"
 
 signal menu_selection_changed()
 
@@ -6,7 +6,7 @@ var menu_index = 0
 var menu_items = []
 
 var parent_node = null
-var next_level_resource = preload("res://GameScene.tscn")
+var next_level_resource = preload("res://TutorialLevel.tscn")
 var credits_resource = preload("res://CreditsScene.tscn")
 
 # Called when the node enters the scene tree for the first time.

@@ -1,6 +1,10 @@
-extends Node2D
+class_name GameSceneObj extends "res://scripts/LoadableScene.gd"
 
-var EscapeCost = 3
+@export var AlienSpeedMultiplier = 1.0
+@export var NextLevel = "res://MenuScene.tscn"
+@export var SingleScreen = false
+
+@export var EscapeCost = 3
 var EscapeProgress = 0
 signal escape_progress(escape_progress)
 signal escape_begin()
@@ -9,22 +13,25 @@ var parent_node = null
 func _ready():
 	parent_node = get_parent()
 	$LilDude/UiHud.visible = true
-	var sprite_dimensions = Vector2($LilDude.width,$LilDude.height)
-	$Bounds/TopBound.transform.origin.y -= sprite_dimensions.y
-	$Bounds/BottomBound.transform.origin.y += sprite_dimensions.y
-	$Bounds/LeftBound.transform.origin.x -= sprite_dimensions.x
-	$Bounds/RightBound.transform.origin.x += sprite_dimensions.x
-	
-	var object = $Viewable/WorldSpace
-	var duplication_size = object.texture.get_size ( )
-	for i in [Vector2(-1,-1),Vector2(0,-1),Vector2(1,-1),
-			  Vector2(-1, 0),Vector2(0, 0),Vector2(1, 0),
-			  Vector2(-1, 1),Vector2(0, 1),Vector2(1, 1)]:
-		if i.x or i.y:
-			var child = object.duplicate()
-			object.add_child(child)
-			child.transform.origin.x += i.x * duplication_size.x
-			child.transform.origin.y += i.y * duplication_size.y
+	if SingleScreen:
+		$LilDude/UiHud.FreezeCamera()
+	else:
+		var sprite_dimensions = Vector2($LilDude.width,$LilDude.height)
+		$Bounds/TopBound.transform.origin.y -= sprite_dimensions.y
+		$Bounds/BottomBound.transform.origin.y += sprite_dimensions.y
+		$Bounds/LeftBound.transform.origin.x -= sprite_dimensions.x
+		$Bounds/RightBound.transform.origin.x += sprite_dimensions.x
+		
+		var object = $Viewable/WorldSpace
+		var duplication_size = object.texture.get_size ( )
+		for i in [Vector2(-1,-1),Vector2(0,-1),Vector2(1,-1),
+				  Vector2(-1, 0),Vector2(0, 0),Vector2(1, 0),
+				  Vector2(-1, 1),Vector2(0, 1),Vector2(1, 1)]:
+			if i.x or i.y:
+				var child = object.duplicate()
+				object.add_child(child)
+				child.transform.origin.x += i.x * duplication_size.x
+				child.transform.origin.y += i.y * duplication_size.y
 
 func _input(event):
 	if event is InputEvent:
@@ -49,12 +56,13 @@ func _on_Enemy_Death():
 func _on_Player_Death():
 	$LilDude.visible = false
 	$LilDude/UiHud.visible = true
-	parent_node.add_child(load("res://MenuScene.tscn").instantiate())
 	queue_free()
+	parent_node.add_child(load("res://MenuScene.tscn").instantiate())
 		
 
 func _on_Player_Escaped():
 	$LilDude.visible = false
 	$LilDude/UiHud.visible = false
-	parent_node.add_child(load("res://MenuScene.tscn").instantiate())
+	name = "Unloading"
 	queue_free()
+	parent_node.add_child(load(NextLevel).instantiate())

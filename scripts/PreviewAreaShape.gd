@@ -14,7 +14,7 @@ func _process(_delta):
 	pass #transform.origin += true_parent.global_position
 
 func _draw():
-	if 1 or ProjectSettings.get_setting_with_override("application/config/game/draw_colliders"):
+	if ProjectSettings.get_setting_with_override("application/config/game/draw_colliders"):
 		draw_collision_shape()
 
 func draw_collision_shape():
