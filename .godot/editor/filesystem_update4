@@ -1,14 +1,4 @@
 res://default_env.tres
-res://GameScene.tscn
-res://scripts/CameraHudUI.gd
-res://AlienDude.tscn
-res://LilDude.tscn
 res://MenuScene.tscn
-res://CreditsScene.tscn
-res://TutorialLevel.tscn
-res://scripts/GameScene.gd
+res://scripts/CameraHudUI.gd
 res://scripts/AlienDude.gd
-res://scripts/MenuScene.gd
-res://scripts/LoadableScene.gd
-res://scripts/LilDude.gd
-res://scripts/PreviewAreaShape.gd

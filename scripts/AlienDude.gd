@@ -31,7 +31,7 @@ func _ready():
 	speed *= GameScene.AlienSpeedMultiplier
 	
 	navigation_ready = true
-	navigation_agent.set_navigation_map ($NavigationRegion2D)
+	navigation_agent.set_navigation_map (get_world_2d().get_navigation_map())
 	navigation_agent.set_target_position(default_location)
 	$AnimationPlayer.play("Walk_Down")
 	

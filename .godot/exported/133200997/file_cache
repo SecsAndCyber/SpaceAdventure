@@ -1,8 +1,9 @@
-res://AndroidPlayerScene.tscn::d3b1afc22e6c09138c3ae49de2c12ed3::1695590829::res://.godot/exported/133200997/export-465d74190fe210dbcdf639df78a5d49b-AndroidPlayerScene.scn
-res://default_env.tres::640f24546710a6b9fa193b081fdd2030::1695610704::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
-res://GameScene.tscn::85a9a57e573b839d4145f6662aa7d835::1695610704::res://.godot/exported/133200997/export-e2c04f88cc384ae305072b7c73076002-GameScene.scn
-res://LilDude.tscn::30940fba3c22c7282afb06776e26857f::1695610704::res://.godot/exported/133200997/export-bf75e14d459152abd78b5405bd46a9df-LilDude.scn
-res://AlienDude.tscn::733e1114e3bf8417427cc33bc4e3eeb0::1695610704::res://.godot/exported/133200997/export-19eb6b02a73a9df2631fc780229c45b3-AlienDude.scn
-res://UiHud.tscn::5a9bef2aac50dfa92809cff446b03bb0::1695586223::res://.godot/exported/133200997/export-0eae71b95294096ead8f2dfb79e4b121-UiHud.scn
-res://MenuScene.tscn::05659d4ac6b4ba376e63544165ed57a1::1695610704::res://.godot/exported/133200997/export-6df2b6e9d1a739a49560e6c0d6418ab0-MenuScene.scn
-res://CreditsScene.tscn::76bc7da1290e4518efaeb4f086e5a7b9::1695610704::res://.godot/exported/133200997/export-672bc89b77ca2a80ac7195ebfb1f9b26-CreditsScene.scn
+res://AndroidPlayerScene.tscn::d3b1afc22e6c09138c3ae49de2c12ed3::1695587229::res://.godot/exported/133200997/export-465d74190fe210dbcdf639df78a5d49b-AndroidPlayerScene.scn
+res://default_env.tres::640f24546710a6b9fa193b081fdd2030::1703775619::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
+res://GameScene.tscn::20f57fad21ffbb9bf51f093bdae85f52::1703775378::res://.godot/exported/133200997/export-e2c04f88cc384ae305072b7c73076002-GameScene.scn
+res://LilDude.tscn::c4838771b1acb2b1ba51bb31c10b99e8::1695617846::res://.godot/exported/133200997/export-bf75e14d459152abd78b5405bd46a9df-LilDude.scn
+res://AlienDude.tscn::733e1114e3bf8417427cc33bc4e3eeb0::1695611725::res://.godot/exported/133200997/export-19eb6b02a73a9df2631fc780229c45b3-AlienDude.scn
+res://UiHud.tscn::5a9bef2aac50dfa92809cff446b03bb0::1695582623::res://.godot/exported/133200997/export-0eae71b95294096ead8f2dfb79e4b121-UiHud.scn
+res://MenuScene.tscn::05659d4ac6b4ba376e63544165ed57a1::1703775619::res://.godot/exported/133200997/export-6df2b6e9d1a739a49560e6c0d6418ab0-MenuScene.scn
+res://CreditsScene.tscn::76bc7da1290e4518efaeb4f086e5a7b9::1695611742::res://.godot/exported/133200997/export-672bc89b77ca2a80ac7195ebfb1f9b26-CreditsScene.scn
+res://TutorialLevel.tscn::0ee6c1eeffc9feb04f5c14c11f8d06f0::1703775378::res://.godot/exported/133200997/export-ef7ed5709491bdf2174582f456dbeba2-TutorialLevel.scn

@@ -8,3 +8,4 @@ android/build
 .godot/export_credentials.cfg
 *.tmp
 
+.godot/shader_cache
